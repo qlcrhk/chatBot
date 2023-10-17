@@ -1,0 +1,25 @@
+/* 기초작업 */
+body{
+    background-color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+/* 로고작업 
+    웹페이지 오른쪽상단 위치
+    모바일 중앙 위치
+    크기 100x100
+*/
+#logo-container img{
+    width: 100px;
+    height: 100px;
+}
+
+
+@media screen and (min-width: 767px){
+    #logo-container{
+        text-align: center;
+    }
+}
