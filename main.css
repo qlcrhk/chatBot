@@ -15,10 +15,11 @@ body{
 #logo-container img{
     width: 100px;
     height: 100px;
+    margin: 10px 0 0 10px;
 }
 
 
-@media screen and (min-width: 767px){
+@media screen and (max-width: 767px){
     #logo-container{
         text-align: center;
     }
