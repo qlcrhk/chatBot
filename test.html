@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GPT-3 Chatbot</title>
+</head>
+<body>
+    <h1>GPT-3 Chatbot</h1>
+    <p>Enter your prompt:</p>
+    <textarea id="userPrompt" rows="4" cols="50"></textarea>
+    <br>
+    <button onclick="getResponse()">Get Response</button>
+    <p>Response:</p>
+    <p id="response"></p>
+
+    <script>
+        async function getResponse() {
+            const userPrompt = document.getElementById("userPrompt").value;
+            const responseContainer = document.getElementById("response");
+
+            const response = await fetch('/getResponse', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ userPrompt })
+            });
+
+            const responseData = await response.text();
+            responseContainer.innerText = responseData;
+        }
+    </script>
+</body>
+</html>
