@@ -4,16 +4,33 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+a{
     text-decoration: none;
+    color: black;
+    font-weight: bold;
 }
 
 /* 로고작업 
     웹페이지 오른쪽상단 위치
     모바일 중앙 위치
-    크기 100x100
 */
 
+.logo{
+    font-size: 30px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    margin: 20px 0 0 20px;
+}
 
+.command{
+    text-align: center;
+}
+
+.title{
+    font-size: 25px;
+    font-weight: bold;
+}
 .model-3d{
     text-align: center;
 }
@@ -72,6 +89,11 @@ body{
 @media screen and (max-width: 767px){
     #logo-container{
         text-align: center;
+    }
+
+    .title{
+        font-size: 15px;
+        font-weight: bold;
     }
 
     .chat-content {
