@@ -8,7 +8,7 @@ const openai = new OpenAI({
     apiKey: 'api-key를 입력하세요',
 });
 
-app.get('/test', (요청, 응답) => {
+app.get('/chatbot', (요청, 응답) => {
     응답.sendFile(__dirname + '/index.html')
 })
 
