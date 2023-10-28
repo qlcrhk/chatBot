@@ -1,4 +1,3 @@
-/*
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,10 +14,12 @@
         <a href="#"><img src="logo.png" alt=""></a>
     </div>
 
+    <div class="turn-btn-container">
+        <button class="turn btn">멈춰!</button>
+    </div>
     <div class="container">
-        <button class="turn">stop</button>
         <div class="model-3d">
-            <canvas id="canvas" width="250" height="250"></canvas>
+            <canvas id="canvas" width="220" height="220"></canvas>
         </div>
 
 
@@ -33,7 +34,7 @@
     </div>
     <div class="chat-input-content">
         <input class="chat-input" id="userPrompt">
-        <button id="send">전송</button>
+        <button id="send" class="btn">전송</button>
     </div>
 
     <!-- 3d 이미지 입력 -->
@@ -47,7 +48,6 @@
     </script>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.3/dist/axios.min.js"></script>
 
     <script type="module">
         import { GLTFLoader } from 'GLTFLoader';
@@ -64,7 +64,7 @@
         renderer.outputEncoding = THREE.sRGBEncoding;
     
         let camera = new THREE.PerspectiveCamera(30, 1);
-        camera.position.set(0.1, 0, 5.5);
+        camera.position.set(0, -0.2, 6);
         scene.background = new THREE.Color(0xf1f1f1); 
     
         let loader = new GLTFLoader();
@@ -83,11 +83,11 @@
             if(count==0){
                 speed = 0;
                 count++;
-                document.querySelector('.turn').innerText = 'turn';
+                document.querySelector('.turn').innerText = '돌아!';
             }else{
                 speed = 0.02;
                 count--;
-                document.querySelector('.turn').innerText = 'stop';
+                document.querySelector('.turn').innerText = '멈춰!';
             }
         });
 
@@ -96,12 +96,12 @@
 
 
         document.querySelector('#send').addEventListener('click',()=>{
-            var ask =document.querySelector('#userPrompt');
+            var ask =document.querySelector('#userPrompt').value;
             var askResult =`<div class="line">
-            <span class="chat-box mine">${ask.value}</span>
+            <span class="chat-box mine">${ask}</span>
             </div>`;
 
-            // document.querySelector('#userPrompt').insertAdjacentHTML(askResult);
+            document.querySelector('.chat-content').insertAdjacentHTML('beforeend',askResult)
 
 
 
@@ -111,7 +111,7 @@
 
         async function getResponse() {
             const userPrompt = document.getElementById("userPrompt").value;
-            const responseContainer = document.querySelector(".bot");
+            const responseContainer = document.querySelector(".chat-content");
   
             const response = await fetch('/getResponse', {
                 method: 'POST',
@@ -125,10 +125,10 @@
 
             const responseData = await response.text();
             var result = `<div class="line">
-            <span class="chat-box bot">${responseData}</span>
+            <span class="chat-box bot">${responseData} 멍멍!!</span>
              </div>`
 
-            responseContainer.insertAdjacentHTML(result)
+            responseContainer.insertAdjacentHTML('beforeend',result)
         }
     </script>
 
