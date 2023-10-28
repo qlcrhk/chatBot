@@ -12,11 +12,7 @@ body{
     모바일 중앙 위치
     크기 100x100
 */
-#logo-container img{
-    width: 100px;
-    height: 100px;
-    margin: 10px 0 0 10px;
-}
+
 
 .model-3d{
     text-align: center;
